@@ -1,0 +1,55 @@
+/////////// Commande Symfony
+
+## Symfony 4
+  composer create-project symfony/website-skeleton my_project
+  ou
+  composer create-project symfony/skeleton my_project
+
+## Symfony 3
+  symfony new nom_du_projet 3.4
+
+## Symfony 2
+  symfony new nom_du_projet 2.8
+
+## Permet de demarrer les serveurs en fonction du serveur et du port
+  php bin/console server:start localhost:8000
+
+## Permet de stopper les serveurs
+  php bin/console server:stop
+
+## Etat d'un serveur
+  php bin/console server:status
+
+## Acceder a mon dossier Symfony
+  C:\Users\admin\Desktop\CoursSymfony
+
+
+
+
+
+
+/////////// MAJ de la config Symfony
+
+- Modifier app/config/parameters.yml .dist
+- Exécuter la commmande : composer update
+
+## Renouvellement de l'autoload
+  composer dump-autoload
+
+
+
+
+
+
+
+/////////// Base de donnée / Doctrine
+
+## Créer une base de donnée
+  php bin/console doctrine:database:create
+
+## Supprimer une base de donnée
+  php bin/console doctrine:database:create
+
+
+
+
