@@ -1,0 +1,19 @@
+actu_article_homepage:
+    path:     /
+    defaults: { _controller: ActuArticleBundle:Default:index }
+
+actu_article_add:
+    path:     /add
+    defaults: { _controller: ActuArticleBundle:Default:add }
+
+actu_article_retrieve:
+    path:     /retrieve
+    defaults: { _controller: ActuArticleBundle:Default:retrieve }
+
+actu_article_update:
+    path:     /update
+    defaults: { _controller: ActuArticleBundle:Default:update }
+
+actu_article_delete:
+    path:     /delete
+    defaults: { _controller: ActuArticleBundle:Default:delete }

@@ -1,0 +1,3 @@
+actu_category_homepage:
+    path:     /
+    defaults: { _controller: ActuCategoryBundle:Default:index }
