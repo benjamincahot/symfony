@@ -2,3 +2,7 @@ services:
 #    actu_article.example:
 #        class: Actu\ArticleBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+  # ArticleBundle\DataFixtures\:
+  #   resource: '../../src/Actu/ArticleBundle/DataFixtures'
+  #   tags: ['doctrine, fixture.orm']

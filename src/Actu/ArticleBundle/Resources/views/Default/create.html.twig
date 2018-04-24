@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<h2>Creation d'un article</h2>
+{{ form_start(form)}}
+{{ form_errors(form)}}
+{{ form_rest(form)}}
+{{ form_end(form)}}
 {% endblock body %}
