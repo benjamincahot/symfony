@@ -18,7 +18,7 @@ class ArticlesType extends AbstractType
         "label" => "Titre de l'article"
       ])
 
-    // <input type="text", name="title">
+    // <input type="textarea", name="title">
       ->add("content", TextareaType::class, [
         "label" => "Contenu de l'article",
         "attr" => [

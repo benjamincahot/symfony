@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new HomeBundle\HomeBundle(),
             new Actu\ArticleBundle\ActuArticleBundle(),
             new Actu\CategoryBundle\ActuCategoryBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -3,6 +3,7 @@
 namespace Actu\ArticleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * Articles
@@ -24,8 +25,18 @@ class Articles
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=100)
+     * @ORM\Column(name="slug", type="string", length=100, unique=true)
+     * 
      */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=100)
+     *
+     */
+
     private $title;
 
     /**
@@ -49,6 +60,10 @@ class Articles
      */
     private $datePublish;
 
+    public function __construct()
+    {
+      $this->dateRedac = new \DateTime();
+    }
 
     /**
      * Get id
@@ -70,6 +85,10 @@ class Articles
     public function setTitle($title)
     {
         $this->title = $title;
+
+        // Génère le Slug du Titre
+        $slugify = new Slugify();
+        $this->slug = $slugify->slugify($this->title);
 
         return $this;
     }
@@ -117,7 +136,7 @@ class Articles
      */
     public function setDateRedac($dateRedac)
     {
-        $this->dateRedac = new \DateTime();
+        $this->dateRedac = $dateRedac;
 
         return $this;
     }
@@ -154,5 +173,29 @@ class Articles
     public function getDatePublish()
     {
         return $this->datePublish;
+    }
+
+    /**
+     * Set slug.
+     *
+     * @param string $slug
+     *
+     * @return Articles
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug.
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
