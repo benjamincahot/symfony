@@ -12,7 +12,18 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@ActuArticle/Default/index.html.twig');
+        // Appel de l'Entity Manager
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em
+          ->getRepository('ActuArticleBundle:Articles')
+          ->findAll();
+
+          dump($articles);
+
+        return $this->render('@ActuArticle/Default/index.html.twig', [
+          "articles" => $articles
+        ]);
     }
 
     // Creation d'un article
@@ -56,15 +67,63 @@ class DefaultController extends Controller
     }
 
     // Lecture d'un article
-    public function retrieveAction()
+    public function retrieveAction($slug, $id)
     {
-        return $this->render('@ActuArticle/Default/retrieve.html.twig');
+      // On retrouve l'article
+      // Appel de l'Entity Manager
+      $em = $this->getDoctrine()->getManager();
+
+      $article = $em
+        ->getRepository('ActuArticleBundle:Articles')
+        ->find($id);
+        // ->findBy([
+        //     "slug" => $slug
+        // ]);
+
+        // dump($article);
+
+        //
+        return $this->render('@ActuArticle/Default/retrieve.html.twig', [
+          "article" => $article
+        ]);
     }
 
     // Mise a jour d'un article
-    public function updateAction()
+    public function updateAction(Request $request, $id)
     {
-        return $this->render('@ActuArticle/Default/update.html.twig');
+      // On récupère l'article
+      $em = $this->getDoctrine()->getManager();
+
+      $article = $em
+        ->getRepository('ActuArticleBundle:Articles')
+        ->find($id);
+
+        // Instance de l'entité
+
+        $form = $this->createForm(ArticlesType::class, $article);
+
+        // On capte l'envoi du formulaire
+
+        if($form->handleRequest($request)->isSubmitted())
+        {
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($article);
+          $em->flush();
+
+          return $this->redirectToRoute("actu_article_retrieve", [
+            "slug" => $article->getSlug(),
+            "id" => $article->getId()
+          ]);
+
+
+        }
+
+        $form = $form ->createView();
+
+        return $this->render('@ActuArticle/Default/update.html.twig', [
+          "form" => $form
+        ]);
     }
 
     // Suppression d'un article

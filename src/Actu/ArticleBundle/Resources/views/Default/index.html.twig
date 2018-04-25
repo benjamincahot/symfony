@@ -1,5 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
 <h2>Liste des articles</h2>
+
+{{ dump( articles ) }}
+
+  {#foreach($articles as $article)
+  }#}
+
+  {% for article in articles  %}
+  <div>
+    <h2>{{ article.title }}</h2>
+    <time>{{ article.dateRedac | date("d-m-Y") }}</time>
+    <div>{{ article.content }}</div>
+    <a href="{{ path('actu_article_retrieve',{
+      "slug": article.slug,
+      "id": article.id
+    }) }}">Lire l'article</a>
+  </div>
+  {% endfor %}
+
+</div>
 {% endblock body %}

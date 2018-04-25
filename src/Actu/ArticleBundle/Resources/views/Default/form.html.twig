@@ -1,33 +1,38 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Ajouter un article</h1>
-      <p class="lead">Vous y êtes ! Ajouter dès maintenant votre premier article a l'aide de ce formulaire.</p>
-    </div>
+{{ form_start(form)}}
+{{ form_errors(form)}}
 
-<div class="container">
-  <form action="" method="post">
-<div class="form-row">
-<div class="form-group col-md-6">
-  <label for="input-group-text">Quel est le titre de votre article ?</label>
-  <span class="error"></span>
-  <input type="text" name="title" class="form-control" id="inputEmail4" value="">
+<div class="form-group row">
+  {{ form_label(form.title, null, {
+    'label_attr': {
+      'class': 'col-sm-2 col-form-label'
+    }
+  }) }}
+  <div class="col-sm-6">
+    {{ form_widget(form.title, {
+    'attr': {
+      'class': 'form-control'
+    }
+    }) }}
+  </div>
 </div>
-<div class="form-group col-md-6">
-  <label for="input-group-text">Quel est votre nom ?</label>
-  <span class="error"></span>
-  <input type="text" name="auteur" class="form-control" id="inputPassword4" value="">
+
+<div class="form-group row">
+  {{ form_label(form.content, null, {
+    'label_attr': {
+      'class': 'col-sm-2 col-form-label'
+    }
+  }) }}
+  <div class="col-sm-6">
+    {{ form_widget(form.content, {
+    'attr': {
+      'class': 'form-control'
+    }
+    }) }}
+  </div>
 </div>
+
+<button type="submit" class="form-group btn btn-success">Submit</button>
+{{ form_rest(form)}}
+{{ form_end(form)}}
 </div>
-<div class="form-group">
-<label for="inputAddress">Ecrivez votre contenu d'article</label>
-<span class="error"></span>
-<textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="8" value=""></textarea>
-</div>
-<button type="submit" name="submitted" value="Ajouter" method="post" class="btn btn-warning btn-sm text-white">Poster mon article</button>
-</form>
-    </div>
-</br>
-</br></br>
-{% endblock body %}
