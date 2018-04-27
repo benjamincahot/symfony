@@ -6,7 +6,8 @@
         "psr-4": {
             "HomeBundle\\": "src/HomeBundle",
             "Actu\\ArticleBundle\\": "src/Actu/ArticleBundle",
-            "Actu\\CategoryBundle\\": "src/Actu/CategoryBundle"
+            "Actu\\CategoryBundle\\": "src/Actu/CategoryBundle",
+            "User\\UserBundle\\": "src/User/UserBundle"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -23,8 +24,11 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "cocur/slugify": "v3.1",
         "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/doctrine-fixtures-bundle": "^3.0.2",
         "doctrine/orm": "^2.5",
+        "friendsofsymfony/user-bundle": "~2.1.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
@@ -32,9 +36,7 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "3.4.*",
-        "twig/twig": "^1.0||^2.0",
-        "doctrine/doctrine-fixtures-bundle": "^3.0.2",
-        "cocur/slugify": "v3.1"
+        "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

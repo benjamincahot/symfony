@@ -1,4 +1,4 @@
-/////////// Commande Symfony
+﻿/////////// Commande Symfony
 
 ## Symfony 4
   composer create-project symfony/website-skeleton my_project
@@ -20,13 +20,9 @@
 ## Etat d'un serveur
   php bin/console server:status
 
-## Acceder a mon dossier Symfony
-  C:\Users\admin\Desktop\CoursSymfony
-
-
-
-
-
+## Vider le cache
+php bin/console cache:clear
+php bin/console cache:clear --env=dev
 
 /////////// MAJ de la config Symfony
 
@@ -37,19 +33,29 @@
   composer dump-autoload
 
 
-
-
-
-
-
 /////////// Base de donnée / Doctrine
 
 ## Créer une base de donnée
   php bin/console doctrine:database:create
 
 ## Supprimer une base de donnée
-  php bin/console doctrine:database:create
+  php bin/console doctrine:database:drop
 
 
+## Gérer une entité
+php bin/console generat:doctrine:entity
+
+# Générer les Getter/Setter d'une entité
+php bin/console doctrine:generate:entities NomDuBundle
+
+# Visualiser les requetes de création des tables
+php bin/console doctrine:schema:update --dump-sql
+
+# Création et MAJ des tables
+php bin/console doctrine:schema:update --force
+
+/////////// Générer un Bundle
+  php bin/console generate:bundle
 
 
+php bin/console degug:router
